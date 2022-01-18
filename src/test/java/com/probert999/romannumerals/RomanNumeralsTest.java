@@ -11,11 +11,12 @@ import java.util.stream.Stream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.params.provider.EnumSource.Mode.EXCLUDE;
 
+
 public class RomanNumeralsTest {
 
   @Test
   public void shouldReturnRomanNumeralIForDecimalOne() {
-    assertEquals("I", RomanNumerals.convert(1));
+    assertEquals("I", RomanNumerals.convertToNumeral(1));
   }
 
   @ParameterizedTest
@@ -24,7 +25,7 @@ public class RomanNumeralsTest {
       mode = EXCLUDE,
       names = {"IV", "IX", "XL", "XC", "CD", "CM"})
   void shouldReturnSingleRomanNumerals(RomanNumeralsEnum numeral) {
-    assertEquals(numeral.getNumeral(), RomanNumerals.convert(numeral.getDecimal()));
+    assertEquals(numeral.getNumeral(), RomanNumerals.convertToNumeral(numeral.getDecimal()));
   }
 
   @ParameterizedTest
@@ -33,13 +34,13 @@ public class RomanNumeralsTest {
       mode = EXCLUDE,
       names = {"I", "V", "X", "L", "C", "D", "M"})
   void shouldReturnOtherPreDefinedRomanNumerals(RomanNumeralsEnum numeral) {
-    assertEquals(numeral.getNumeral(), RomanNumerals.convert(numeral.getDecimal()));
+    assertEquals(numeral.getNumeral(), RomanNumerals.convertToNumeral(numeral.getDecimal()));
   }
 
   @ParameterizedTest
-  @MethodSource("romanNumeralTestData")
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#otherRomanNumeralTestData")
   void shouldReturnCorrectNumeralDefinedInTestData(int inputValue, String expectedNumeral) {
-    assertEquals(expectedNumeral, RomanNumerals.convert(inputValue));
+    assertEquals(expectedNumeral, RomanNumerals.convertToNumeral(inputValue));
   }
 
   private static Stream<Arguments> romanNumeralTestData() {
