@@ -8,6 +8,7 @@ public class RomanNumeralTestData {
 
   public static Stream<Arguments> singleRomanNumeralTestData() {
     return Stream.of(
+        Arguments.of(1, "I"),
         Arguments.of(5, "V"),
         Arguments.of(10, "X"),
         Arguments.of(50, "L"),
@@ -26,13 +27,26 @@ public class RomanNumeralTestData {
         Arguments.of(900, "CM"));
   }
 
-  public static Stream<Arguments> otherRomanNumeralTestData() {
+  public static Stream<Arguments> simpleRomanNumeralTestData() {
     return Stream.of(
+            Arguments.of(2, "II"),
+            Arguments.of(3, "III"),
+            Arguments.of(7, "VII"),
+            Arguments.of(15, "XV"),
+            Arguments.of(35, "XXXV"),
+            Arguments.of(1066, "MLXVI"),
+            Arguments.of(2022, "MMXXII"),
+            Arguments.of(3000, "MMM"));
+  }
+
+  public static Stream<Arguments> complexRomanNumeralTestData() {
+    return Stream.of(
+        Arguments.of(18, "XVIII"),
+        Arguments.of(49, "XLIX"),
         Arguments.of(99, "XCIX"),
         Arguments.of(999, "CMXCIX"),
-        Arguments.of(2022, "MMXXII"),
-        Arguments.of(3000, "MMM"),
         Arguments.of(1234, "MCCXXXIV"),
-        Arguments.of(1971, "MCMLXXI"));
+        Arguments.of(1971, "MCMLXXI"),
+        Arguments.of(3999, "MMMCMXCIX"));
   }
 }

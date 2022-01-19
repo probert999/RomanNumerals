@@ -15,22 +15,28 @@ public class RomanNumeralsToDecimalTest {
 
   @ParameterizedTest
   @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#singleRomanNumeralTestData")
-  void shouldReturnCorrectDecimalValueForSingleNumeralsDefinedInTestData(
+  void shouldReturnCorrectDecimalValueForSingleNumeralsTestData(
       int expectedValue, String inputNumeral) {
     assertEquals(expectedValue, RomanNumerals.convertToDecimal(inputNumeral));
   }
 
   @ParameterizedTest
-  @MethodSource(
-      "com.probert999.romannumerals.RomanNumeralTestData#otherPredefinedRomanNumeralTestData")
-  void shouldReturnDecimalValuesForOtherPreDefinedRomanNumerals(
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#otherPredefinedRomanNumeralTestData")
+  void shouldReturnCorrectDecimalValuesForOtherPreDefinedRomanNumeralsTestData(
       int expectedValue, String inputNumeral) {
     assertEquals(expectedValue, RomanNumerals.convertToDecimal(inputNumeral));
   }
 
   @ParameterizedTest
-  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#otherRomanNumeralTestData")
-  void shouldReturnCorrectDecimalValueforNumeralsDefinedInTestData(
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#simpleRomanNumeralTestData")
+  void shouldReturnCorrectDecimalValuesForSimpleRomanNumeralsTestData(
+          int expectedValue, String inputNumeral) {
+    assertEquals(expectedValue, RomanNumerals.convertToDecimal(inputNumeral));
+  }
+
+  @ParameterizedTest
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#complexRomanNumeralTestData")
+  void shouldReturnCorrectDecimalValueForComplexRomanNumeralsTestData(
       int expectedValue, String inputNumeral) {
     assertEquals(expectedValue, RomanNumerals.convertToDecimal(inputNumeral));
   }

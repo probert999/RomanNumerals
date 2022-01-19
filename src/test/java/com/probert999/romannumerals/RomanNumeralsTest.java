@@ -20,36 +20,30 @@ public class RomanNumeralsTest {
   }
 
   @ParameterizedTest
-  @EnumSource(
-      value = RomanNumeralsEnum.class,
-      mode = EXCLUDE,
-      names = {"IV", "IX", "XL", "XC", "CD", "CM"})
-  void shouldReturnSingleRomanNumerals(RomanNumeralsEnum numeral) {
-    assertEquals(numeral.getNumeral(), RomanNumerals.convertToNumeral(numeral.getDecimal()));
-  }
-
-  @ParameterizedTest
-  @EnumSource(
-      value = RomanNumeralsEnum.class,
-      mode = EXCLUDE,
-      names = {"I", "V", "X", "L", "C", "D", "M"})
-  void shouldReturnOtherPreDefinedRomanNumerals(RomanNumeralsEnum numeral) {
-    assertEquals(numeral.getNumeral(), RomanNumerals.convertToNumeral(numeral.getDecimal()));
-  }
-
-  @ParameterizedTest
-  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#otherRomanNumeralTestData")
-  void shouldReturnCorrectNumeralDefinedInTestData(int inputValue, String expectedNumeral) {
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#singleRomanNumeralTestData")
+  void shouldReturnCorrectDecimalValueForSingleNumeralsTestData(
+          int inputValue, String expectedNumeral) {
     assertEquals(expectedNumeral, RomanNumerals.convertToNumeral(inputValue));
   }
 
-  private static Stream<Arguments> romanNumeralTestData() {
-    return Stream.of(
-        Arguments.of(99, "XCIX"),
-        Arguments.of(999, "CMXCIX"),
-        Arguments.of(2022, "MMXXII"),
-        Arguments.of(3000, "MMM"),
-        Arguments.of(1234, "MCCXXXIV"),
-        Arguments.of(1971, "MCMLXXI"));
+  @ParameterizedTest
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#simpleRomanNumeralTestData")
+  void shouldReturnCorrectDecimalValueForSimpleNumeralsTestData(
+          int inputValue, String expectedNumeral) {
+    assertEquals(expectedNumeral, RomanNumerals.convertToNumeral(inputValue));
   }
+
+  @ParameterizedTest
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#otherPredefinedRomanNumeralTestData")
+  void shouldReturnCorrectDecimalValueForOtherPreDefinedRomanNumeralsTestData(
+          int inputValue, String expectedNumeral) {
+    assertEquals(expectedNumeral, RomanNumerals.convertToNumeral(inputValue));
+  }
+
+  @ParameterizedTest
+  @MethodSource("com.probert999.romannumerals.RomanNumeralTestData#complexRomanNumeralTestData")
+  void shouldReturnCorrectDecimalValueForComplexRomanNumeralTestData(int inputValue, String expectedNumeral) {
+    assertEquals(expectedNumeral, RomanNumerals.convertToNumeral(inputValue));
+  }
+
 }
