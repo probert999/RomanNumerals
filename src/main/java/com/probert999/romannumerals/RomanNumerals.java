@@ -11,7 +11,9 @@ public class RomanNumerals {
       int numeralValue = numeral.getDecimal();
       int addValue = decimalValue / numeralValue;
       if (addValue > 0) {
-        returnString = returnString.concat(String.join("", Collections.nCopies(addValue, numeral.getNumeral())));
+        returnString =
+            returnString.concat(
+                String.join("", Collections.nCopies(addValue, numeral.getNumeral())));
         decimalValue -= (addValue * numeralValue);
       }
     }
@@ -25,7 +27,9 @@ public class RomanNumerals {
     for (int position = 0; position < numeralToConvert.length(); position++) {
       RomanNumeralsEnum currentNumeral =
           RomanNumeralsEnum.valueOf(numeralToConvert.substring(position, position + 1));
+
       int currentNumeralValue = currentNumeral.getDecimal();
+
       if (currentNumeralValue <= previousNumeralValue) {
         decimalValue += currentNumeralValue;
         previousNumeralValue = currentNumeralValue;
